@@ -2,7 +2,7 @@ import psutil
 import cpuinfo
 class CPU():
     def __init__(self):
-        self.cpu = cpuinfo.get_cpu_info()
+        self.cpu = cpuinfo.get_cpu_info()['brand_raw']
         self.core = psutil.cpu_count()
         self.p_core = psutil.cpu_count(logical=False)
         raw_feq = psutil.cpu_freq()
@@ -11,11 +11,11 @@ class CPU():
         self.disk = psutil.disk_usage('/')
         self.ram = psutil.virtual_memory()
 
-cpu = CPU()
-print(cpu.cpu['brand_raw'])
-print(cpu.core)
-print(cpu.p_core)
-print(cpu.max_ghz)
-print(cpu.min_ghz)
-print(cpu.disk)
-print(cpu.ram)
+# cpu = CPU()
+# print(cpu.cpu)
+# print(cpu.core)
+# print(cpu.p_core)
+# print(cpu.max_ghz)
+# print(cpu.min_ghz)
+# print(cpu.disk)
+# print(cpu.ram)
