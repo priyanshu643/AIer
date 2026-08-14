@@ -41,7 +41,8 @@ pip install psutil py-cpuinfo requests huggingface_hub llama-cpp-python
 To start the hardware scan and generate your recommendation, run:
 
 ```bash
-python script/script.py
+source .venv/bin/activate
+    python script/script.py
 ```
 
 ### What happens when you run it?
