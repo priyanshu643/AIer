@@ -1,8 +1,23 @@
+import os
+import sys
+from pathlib import Path
+
+# Add project root and script dir to sys.path so it works when run from any directory
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(1, str(SCRIPT_DIR))
+
 import requests
 import re
 from stats.cpu import CPU
 from stats.gpu import GPU
-from AI import AIerEngine
+try:
+    from script.AI import AIerEngine
+except ImportError:
+    from AI import AIerEngine
 
 
 def calculate_vram_needs(model_id):

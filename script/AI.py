@@ -8,7 +8,8 @@ class AIerEngine:
         # We define exactly which model we want to power our CLI
         self.repo_id = "Qwen/Qwen2.5-1.5B-Instruct-GGUF"
         self.filename = "qwen2.5-1.5b-instruct-q4_k_m.gguf"
-        self.models_dir = os.path.join(os.getcwd(), "models")
+        project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.models_dir = os.path.join(project_root, "models")
         self.llm = None
 
     def install_and_load(self):
@@ -45,10 +46,6 @@ class AIerEngine:
         )
 
         return response['choices'][0]['message']['content'].strip()
-
-        # Extract just the text from the response dictionary
-        text = response['choices'][0]['text'].strip()
-        return text
 
 
 # --- Test it out ---
