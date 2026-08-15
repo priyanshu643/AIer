@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 from pathlib import Path
 
 # Add project root and script dir to sys.path so it works when run from any directory
@@ -18,6 +19,15 @@ try:
     from script.AI import AIerEngine
 except ImportError:
     from AI import AIerEngine
+
+
+def typingInput(text):
+    for character in text:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    value = input()
+    return value
 
 
 def calculate_vram_needs(model_id):
@@ -109,7 +119,7 @@ def main():
 
     # The local AI generates the final text!
     recommendation = engine.generate_advice(prompt)
-    print(recommendation)
+    typingInput(recommendation)
     print("=" * 40)
 
 
